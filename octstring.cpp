@@ -11,9 +11,9 @@ Octstring::Octstring(int m_octnumb) : Symbstring("", ""), octnum(m_octnumb)
 
 std::istream &operator>>(std::istream &in, Octstring &oc)
 {
-    
+    std::cout << "\tMAXIM\t ";
     in >> oc.id >> oc.octnum;
-    
+        
     return in;
 }
 
