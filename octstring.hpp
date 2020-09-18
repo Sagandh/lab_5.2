@@ -15,4 +15,5 @@ class Octstring : public Symbstring
         friend const Symbstring operator+(const Symbstring&, const Octstring&);
         friend std::ostream & operator<<(std::ostream &out, const Octstring &oc);
         friend const Octstring operator+(const Octstring&, const Octstring&);
+        friend std::string searchoct(std::vector<Octstring>&, std::string);
 };

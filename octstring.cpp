@@ -3,21 +3,16 @@
 #include <istream>
 #include <ostream>
 #include <string>
+#include <iostream>
 
 Octstring::Octstring(int m_octnumb) : Symbstring("", ""), octnum(m_octnumb)
 {
-    do
-    {
-            str = static_cast<char>(octnum % 8) + str;
-            octnum /= 8;
-
-    }while(octnum > 0);
 }
 
 std::istream &operator>>(std::istream &in, Octstring &oc)
 {
     
-    in >> oc.octnum;
+    in >> oc.id >> oc.octnum;
     
     return in;
 }
@@ -35,7 +30,22 @@ const Octstring operator+(const Octstring &f, const Octstring &s)
 std::ostream &operator<<(std::ostream &out, const Octstring &oc)
 {
 
-    out << oc.octnum << ", ";
+    out << std::oct <<oc.octnum;
 
     return out;
 }
+
+
+std::string searchoct(std::vector<Octstring> &oct, std::string str)
+
+{
+    for(int i = 0; i < oct.size(); i++)
+    {
+        if(str == oct[i].id)
+        {
+            return oct[i].str;            
+        }
+    }  
+    return "No matches found";
+}
+
