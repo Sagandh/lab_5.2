@@ -14,32 +14,31 @@ int main()
     std::vector<Symbstring> systring;
     std::vector<Octstring> octstring;
     Symbstring s1;
-    Symbstring s2;
     Octstring oc1;
-    
-    while(true)
+    char key;
+    while(key != 'q')
     {
         std::cout << "1: add new symbstring\t"
             << "2: show all symbstring\t"
             << "3: sum symb and oct\t"
             << "4: add new octstring\t"
             << "5: show all octstring\t\n"
-            << "6: exit\n";
-        std::cin >> n;
-        switch(n)
+            << "q: exit\n";
+        std::cin >> key;
+        switch(key)
         {
-            case 1:
+            case '1':
                 std::cin >> s1;
                 systring.push_back(s1);
                 system("clear");
                 break;
-            case 2:
+            case '2':
                 for(int i = 0; i < systring.size(); i ++)
                 {
                     std::cout << " " << systring[i];
                 }
                 break;
-            case 3:
+            case '3':
                 system("clear");
                 int tmp;
                 std::cout << "Choose the id number of symbstring: 1: symb + symb\n 2: oct + oct\n 3: symb + oct\n";
@@ -59,8 +58,18 @@ int main()
                         std::cout << sumsymb;
                             }
                         break;
-                    case 2:
+                     case 2:
                         {
+                        std::cout << "Enter the ID octsymb\n";
+                        std::string tmp_id;
+                        std::cin >> tmp_id;
+                        std::string tmp_finale1 = searchoct(octstring, tmp_id);
+                            
+                        std::cout << "Enter the ID octsymb\n";
+                        std::cin >> tmp_id;
+                        std::string tmp_finale2 = searchoct(octstring, tmp_id);
+                        std::string octsymb = tmp_finale1 + tmp_finale2;
+                        std::cout << "octsymb =  " <<octsymb << "\n";
                         break;
                         }
                     case 3:
@@ -68,23 +77,21 @@ int main()
                         break;
                         }
                 break;
-            case 4:
+            case '4':
+                {
                 std::cin >> oc1;
                 octstring.push_back(oc1);
                 system("clear");
                 break;
-            case 5:
+                }
+            case '5':
                 for(int i = 0; i < octstring.size(); i++)
                 {
                     std::cout << octstring[i];
                 }
                 break;
-            case 6:
-                goto exit;
-            default:
-                break;
-                }
-                exit:
+            
+                }     
                 return 0;
             }
     }}
