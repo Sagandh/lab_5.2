@@ -14,4 +14,5 @@ class Octstring : public Symbstring
         friend std::istream &operator>>(std::istream &in, Octstring &oc);
         friend const Symbstring operator+(const Symbstring&, const Octstring&);
         friend std::ostream & operator<<(std::ostream &out, const Octstring &oc);
+        friend const Octstring operator+(const Octstring&, const Octstring&);
 };

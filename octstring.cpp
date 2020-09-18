@@ -2,8 +2,9 @@
 #include "symbstring.hpp"
 #include <istream>
 #include <ostream>
+#include <string>
 
-Octstring::Octstring(int m_octnumb) : Symbstring(""), octnum(m_octnumb)
+Octstring::Octstring(int m_octnumb) : Symbstring("", ""), octnum(m_octnumb)
 {
     do
     {
@@ -23,13 +24,18 @@ std::istream &operator>>(std::istream &in, Octstring &oc)
 
 const Symbstring operator+(const Symbstring &f, const Octstring &s)
 {
-    return Symbstring(f.str + std::to_string(s.octnum));
+    return Symbstring(f.str + std::to_string(s.octnum), s.id);
+}
+
+const Octstring operator+(const Octstring &f, const Octstring &s)
+{
+    return Octstring(f.octnum + s.octnum);
 }
 
 std::ostream &operator<<(std::ostream &out, const Octstring &oc)
 {
 
-    out << oc.octnum;
+    out << oc.octnum << ", ";
 
     return out;
 }
